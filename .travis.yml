@@ -1,0 +1,13 @@
+language: minimal
+
+services: docker
+
+before install:
+
+  - docker -v && docker-compose -v
+  - docker login 
+
+install:
+
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yamll push
